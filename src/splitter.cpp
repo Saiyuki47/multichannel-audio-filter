@@ -1,5 +1,5 @@
 /*
-Liest die Eingabe-RAW-Datei und verteilt die einzelnen Samples reihum auf die
+Liest die Eingabe-RAW-Datei und verteilt die einzelnen Samples im Round Robin Verfahren reihum auf die
 vier Kanal-Pipes (Kanal 1, 2, 3, 4, 1, 2, 3, 4, ...). Jeder Worker bekommt so
 jedes vierte Sample.
 */
