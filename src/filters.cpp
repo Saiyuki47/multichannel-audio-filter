@@ -1,5 +1,6 @@
 /*
 Enthält die eigentlichen Filter-Operationen (z.B. Lautstärke erhöhen, Absolutwert). Diese Funktionen nehmen ein Sample, verarbeiten es Schritt für Schritt und liefern das veränderte Byte zurück.
+Hier können beliebig neue Filter definiert werden. In filters.json lassen sich die Effekte dann den Channels zuordnen
 */
 
 #include "filters.hpp"
