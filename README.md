@@ -1,3 +1,9 @@
+## Das komplette Projekt ist eine Zusammenarbeit von :
+### - David Salz 
+### - Leon Döhrer 
+### - Hendrik Voß 
+
+
 # Multichannel Audio Filter
 
 [![CI](https://github.com/Saiyuki47/multichannel-audio-filter/actions/workflows/ci.yml/badge.svg)](https://github.com/Saiyuki47/multichannel-audio-filter/actions/workflows/ci.yml)
