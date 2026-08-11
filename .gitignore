@@ -1,0 +1,12 @@
+# Build-Artefakte
+/build/
+watcher
+rawtester
+*.o
+*.obj
+
+# Laufzeit-Ausgaben
+final.raw
+
+# OS
+.DS_Store

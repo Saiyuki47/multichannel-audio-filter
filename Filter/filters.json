@@ -1,0 +1,18 @@
+{
+  "channels": {
+    "1": [
+      { "type": "increaseVolume", "amount": 25 }
+    ],
+    "2": [
+      { "type": "increaseVolume", "amount": 25 }
+    ],
+    "3": [
+      { "type": "increaseVolume", "amount": 25 },
+      { "type": "absolute" }
+    ],
+    "4": [
+      { "type": "increaseVolume", "amount": 25 },
+      { "type": "absolute" }
+    ]
+  }
+}
