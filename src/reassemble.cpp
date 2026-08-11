@@ -21,8 +21,7 @@ void assembleOutput(const std::string channel_outputs[4], const std::string& fin
     // Die Ausgabedatei zum Schreiben öffnen. "trunc" = vorher leeren.
     std::ofstream output(
         final_output_path,
-        std::ios::binary | std::ios::trunc
-    );
+        std::ios::binary | std::ios::trunc);
 
 
     // Klappt das Öffnen der Ausgabe nicht, brechen wir ab.
@@ -38,12 +37,11 @@ void assembleOutput(const std::string channel_outputs[4], const std::string& fin
 
 
     // Alle vier Kanal-Dateien öffnen.
-    for(int i=0;i<4;i++)
+    for(int i = 0; i < 4; i++)
     {
         inputs[i].open(
             channel_outputs[i],
-            std::ios::binary
-        );
+            std::ios::binary);
 
 
         // Fehlt eine Kanaldatei, abbrechen.
@@ -70,18 +68,17 @@ void assembleOutput(const std::string channel_outputs[4], const std::string& fin
         wrote_data = false;
 
 
-        for(int i=0;i<4;i++)
+        for(int i = 0; i < 4; i++)
         {
             // Aus Kanal i ein Sample lesen ...
             if(inputs[i].read(
-                reinterpret_cast<char*>(&sample),
-                1))
+                   reinterpret_cast<char*>(&sample),
+                   1))
             {
                 // ... und sofort in die Ausgabe schreiben.
                 output.write(
                     reinterpret_cast<const char*>(&sample),
-                    1
-                );
+                    1);
 
                 wrote_data = true; // es kam noch was -> weiter machen
             }

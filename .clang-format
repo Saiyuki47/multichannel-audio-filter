@@ -1,0 +1,18 @@
+# Code-Stil für das Multichannel-Audio-Filter-Projekt.
+# Orientiert sich am vorhandenen Stil: Allman-Klammern, 4 Leerzeichen Einrückung,
+# kein Leerzeichen nach if/for/while.
+Language: Cpp
+BasedOnStyle: LLVM
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+ColumnLimit: 0
+BreakBeforeBraces: Allman
+SpaceBeforeParens: Never
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: None
+AllowShortBlocksOnASingleLine: Never
+MaxEmptyLinesToKeep: 2
+PointerAlignment: Left
+SortIncludes: false

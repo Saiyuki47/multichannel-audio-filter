@@ -3,7 +3,6 @@ Führt die eigentliche Arbeit aus (z.B. Lesen, Filtern, Schreiben). Ein Worker v
 */
 
 
-
 #include "worker.hpp"
 
 #include <iostream>
@@ -46,8 +45,7 @@ void worker(
         write(
             write_fd,
             &processed_sample,
-            1
-        );
+            1);
 
 
         // später:

@@ -19,7 +19,6 @@ am Ende alles wieder freigeben.
 #include <gpiod.h>
 
 
-
 namespace
 {
 constexpr std::size_t CHANNELS = 4;
@@ -50,8 +49,7 @@ bool requestLine(
     std::array<gpiod_line*, CHANNELS>& storage,
     std::size_t channel,
     const char* consumer, // Name, unter dem wir die Leitung "belegen"
-    bool required
-)
+    bool required)
 {
     // Ungültige Kanalnummer -> nichts tun.
     if(channel >= CHANNELS)
@@ -123,8 +121,8 @@ void pulseGpio(std::size_t channel)
     if(gpiod_line_set_value(line, 1) != 0)
         return;
 
-    usleep(PULSE_US);                 // ganz kurz warten
-    gpiod_line_set_value(line, 0);    // Pin wieder auf 0 (aus)
+    usleep(PULSE_US);              // ganz kurz warten
+    gpiod_line_set_value(line, 0); // Pin wieder auf 0 (aus)
 }
 
 // Gibt alle Leitungen und den Chip wieder frei (Aufräumen am Ende).

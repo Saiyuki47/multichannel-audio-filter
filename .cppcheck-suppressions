@@ -1,0 +1,10 @@
+// cppcheck-Unterdrückungen für bekannte, bewusst akzeptierte Hinweise.
+// Format: <id>:<datei>:<zeile>  (oder nur <id> für projektweit)
+
+// Vorschlag, std::accumulate statt der einfachen Schleife zu nutzen.
+// Die explizite Schleife ist hier bewusst gewählt (besser lesbar).
+useStlAlgorithm
+
+// "bytes_read < 0 ist immer wahr": stimmt an dieser Stelle, ist aber
+// absichtliche, defensive Fehlerbehandlung nach den vorherigen Prüfungen.
+knownConditionTrueFalse:src/streamReassemble.cpp

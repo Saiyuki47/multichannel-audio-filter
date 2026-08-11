@@ -120,10 +120,10 @@ int runAudioSystem()
             closeWorkerProcessEnds(pipes, result_pipes, i);
 
             worker(
-                i + 1,                 // Kanalnummer (1-basiert, nur zur Anzeige)
-                pipes[i][0],           // liest rohe Samples von hier
-                result_pipes[i][1],    // schreibt gefilterte Samples hierhin
-                channel_filters[i]     // die Filterkette dieses Kanals
+                i + 1,              // Kanalnummer (1-basiert, nur zur Anzeige)
+                pipes[i][0],        // liest rohe Samples von hier
+                result_pipes[i][1], // schreibt gefilterte Samples hierhin
+                channel_filters[i]  // die Filterkette dieses Kanals
             );
 
             return 0; // Worker fertig -> Kindprozess beenden
@@ -152,8 +152,7 @@ int runAudioSystem()
 
         assembleOutputFromPipes(
             result_pipes,
-            final_output_path
-        );
+            final_output_path);
 
         return 0;
     }

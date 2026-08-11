@@ -7,7 +7,6 @@ Enthält die eigentlichen Filter-Operationen (z.B. Lautstärke erhöhen, Absolut
 #include <cstdlib>
 
 
-
 // Schaut nach, welche Art von Filter der Schritt ist,
 // und ruft die passende Funktion auf.
 unsigned char applyFilterStep(unsigned char sample, const FilterStep& step)

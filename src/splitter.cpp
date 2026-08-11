@@ -11,7 +11,6 @@ jedes vierte Sample.
 #include <unistd.h>
 
 
-
 void splitter(int pipes[CHANNELS][2])
 {
     std::cout
@@ -20,7 +19,7 @@ void splitter(int pipes[CHANNELS][2])
 
     // Der Splitter schreibt nur, er liest nicht aus den Pipes.
     // Deshalb die lese-Enden ([0]) schließen; die schreib-Enden ([1]) behalten.
-    for(int i=0;i<CHANNELS;i++)
+    for(int i = 0; i < CHANNELS; i++)
     {
         close(pipes[i][0]);
     }
@@ -29,8 +28,7 @@ void splitter(int pipes[CHANNELS][2])
     // Die Roh-Audiodatei öffnen (binär, also Byte für Byte).
     std::ifstream input(
         "input/audio_data_team1.raw",
-        std::ios::binary
-    );
+        std::ios::binary);
 
 
     // Falls die Datei fehlt: Fehlermeldung, Pipes schließen und aufhören.
@@ -39,7 +37,7 @@ void splitter(int pipes[CHANNELS][2])
         std::cerr
             << "Kann input/audio_data_team1.raw nicht oeffnen\n";
 
-        for(int i=0;i<CHANNELS;i++)
+        for(int i = 0; i < CHANNELS; i++)
         {
             close(pipes[i][1]);
         }
@@ -65,8 +63,7 @@ void splitter(int pipes[CHANNELS][2])
         write(
             pipes[channel][1],
             &sample,
-            1
-        );
+            1);
 
 
         index++;
@@ -83,7 +80,7 @@ void splitter(int pipes[CHANNELS][2])
 
     // Zum Schluss die schreib-Enden schließen.
     // Dadurch bekommen die Worker ein EOF und wissen: es kommt nichts mehr.
-    for(int i=0;i<CHANNELS;i++)
+    for(int i = 0; i < CHANNELS; i++)
     {
         close(pipes[i][1]);
     }

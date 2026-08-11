@@ -1,0 +1,63 @@
+name: CI
+
+# Läuft bei Pushes und Pull Requests. So werden Änderungen automatisch geprüft.
+on:
+  push:
+  pull_request:
+  workflow_dispatch: # erlaubt manuelles Starten über die GitHub-Oberfläche
+
+jobs:
+  # 1) Bauen: kompiliert das Projekt und zeigt Compiler-Warnungen an.
+  build:
+    name: Build & Warnungen
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Abhängigkeiten installieren (libgpiod)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgpiod-dev
+
+      - name: watcher bauen (mit strengen Warnungen)
+        run: make watcher CXXFLAGS="-O2 -Wall -Wextra -Wpedantic -std=c++17"
+
+      - name: rawtester bauen (Test-Werkzeug)
+        run: make rawtester CXXFLAGS="-O2 -Wall -Wextra -Wpedantic -std=c++17"
+
+  # 2) Statische Analyse: sucht mögliche Bugs, ohne das Programm auszuführen.
+  cppcheck:
+    name: cppcheck (statische Analyse)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: cppcheck installieren
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cppcheck
+
+      - name: cppcheck ausführen
+        run: |
+          cppcheck --enable=warning,style,performance,portability \
+            --std=c++17 --language=c++ \
+            --inline-suppr --suppressions-list=.cppcheck-suppressions \
+            --suppress=missingIncludeSystem \
+            --error-exitcode=1 -I. rawtester.cpp src/
+
+  # 3) Stil-Prüfung: prüft einheitliche Formatierung nach .clang-format.
+  format:
+    name: clang-format (Stil)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: clang-format installieren
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang-format
+
+      - name: Formatierung prüfen
+        run: |
+          clang-format --version
+          clang-format --dry-run --Werror rawtester.cpp src/*.cpp src/*.hpp

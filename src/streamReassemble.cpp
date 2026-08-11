@@ -29,8 +29,7 @@ void assembleOutputFromPipes(int pipes[4][2], const std::string& final_output_pa
     // Ausgabedatei öffnen (binär, vorher leeren).
     std::ofstream output(
         final_output_path,
-        std::ios::binary | std::ios::trunc
-    );
+        std::ios::binary | std::ios::trunc);
 
 
     if(!output)
@@ -189,12 +188,11 @@ void assembleOutputFromPipes(int pipes[4][2], const std::string& final_output_pa
             // Vorderstes Byte dieses Kanals in die Ausgabe schreiben.
             output.write(
                 reinterpret_cast<const char*>(&buffers[channel].front()),
-                1
-            );
+                1);
 
-            output.flush(); // sofort rausschreiben (Live-Ausgabe)
+            output.flush();                               // sofort rausschreiben (Live-Ausgabe)
             pulseGpio(static_cast<std::size_t>(channel)); // Hardware-Impuls für den Kanal
-            buffers[channel].pop_front(); // Byte ist verarbeitet -> entfernen
+            buffers[channel].pop_front();                 // Byte ist verarbeitet -> entfernen
             emitted_sample = true;
             next_channel = (channel + 1) % channel_count; // nächster Kanal ist dran
             break;
