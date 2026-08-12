@@ -1,7 +1,7 @@
 ## Das komplette Projekt ist eine Zusammenarbeit von :
 ### - David Saiz - 1370849
 ### - Leon Döhrer 
-### - Hendrik Voß 
+### - Hendrik Voß - 1466566
 
 
 # Multichannel Audio Filter
